@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks List</title>
+</head>
+<body>
+    <h1>Tasks</h1>
+<ul>
+{% for task in tasks_list %}
+    <li>{{ task.task_title }} </li>
+    <button><a href="{% url 'taskLister:delete-task' task.id %}" task.id>delete</a></button>
+{% empty %}
+    <li>No task yet.</li>
+{% endfor %}
+<br>
+<a href="{% url 'taskLister:tasks-form' %}">Enter your task here</a>
+</ul>
+</body>
+</html>
